@@ -17,37 +17,25 @@ TComplejo :: ~TComplejo(){
 }
 
 //POR HACER
-TComplejo operator+(double d, TComplejo &otro){
-    TComplejo t;
-
-    t.re = d + otro.re;
-    t.im = d + otro.im;
-
-    return t;
+TComplejo operator+(double d, TComplejo &otro) {
+    TComplejo t(d); // Convertimos double a TComplejo
+    return t + otro; // Usamos el operador de la clase
 }
 
 //POR HACER
 
 
-TComplejo operator-(double d, TComplejo &otro){
-    TComplejo t;
-
-    t.re = d - otro.re;
-    t.im = d - otro.im;
-
-    return t;
+TComplejo operator-(double d, TComplejo &otro) {
+    TComplejo t(d);
+    return t - otro;
 }
 
 //POR HACER
 
 
-TComplejo operator*(double d, TComplejo &otro){
-    TComplejo t;
-
-    t.re = d * otro.re;
-    t.im = d * otro.im;
-
-    return t;
+TComplejo operator*(double d, TComplejo &otro) {
+    TComplejo t(d);
+    return t * otro;
 }
 
 void TComplejo :: Re(double re){
@@ -79,10 +67,11 @@ double TComplejo :: Arg(){
 
 
 
-TComplejo& TComplejo :: operator=(TComplejo& otro){
-    this->re = otro.re;
-    this->im = otro.im;
-
+TComplejo& TComplejo::operator=(TComplejo &otro) {
+    if (this != &otro) {
+        this->re = otro.re;
+        this->im = otro.im;
+    }
     return *this;
 }
 
@@ -124,30 +113,25 @@ TComplejo TComplejo :: operator-(TComplejo &otro){
 }
 //Posible cambio
 
-TComplejo TComplejo :: operator*(TComplejo &otro){
+TComplejo TComplejo::operator*(TComplejo &otro) {
     TComplejo t;
-
-    t.re = this->re * otro.re;
-    t.im = this->im * otro.im;
-
+    t.re = (this->re * otro.re) - (this->im * otro.im);
+    t.im = (this->re * otro.im) + (this->im * otro.re);
     return t;
-
 }
 
-bool TComplejo :: operator==(TComplejo &otro){
-    if(this->re == otro.re && this->im == otro.im){
-        return true;
-    }else{
-        return false;
-    }
+bool TComplejo::operator==(TComplejo &otro) {
+    return (this->re == otro.re && this->im == otro.im);
+}   
+
+bool TComplejo::operator!=(TComplejo &otro) {
+    // Un complejo es distinto si la real es distinta O la imaginaria es distinta
+    return (this->re != otro.re || this->im != otro.im);
 }
 
-bool TComplejo :: operator!=(TComplejo &otro){
-    if(this->re != otro.re || this->im != otro.im){
-        return true;
-    }else{
-        return false;
-    }
+ostream & operator<<(ostream &os, TComplejo &c) {
+    os << "(" << c.re << " " << c.im << ")";
+    return os;
 }
 
 
