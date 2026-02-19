@@ -1,11 +1,11 @@
 .PHONY= doc clean
 
-CC=g++
+CC=g++-13
 OPTIONS= -g 
 DEBUG= #-D DEBUG
 LIBDIR=lib
 INCLUDEDIR=include
-_OBJ= tcomplejo.o tvectorcom.o tlistacom.o 
+_OBJ= tcomplejo.o
 OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
 
 tad:    src/tad.cpp $(OBJ)

@@ -69,7 +69,7 @@ double TComplejo ::Arg()
     return a;
 }
 
-TComplejo &TComplejo ::operator=(TComplejo &otro)
+TComplejo &TComplejo ::operator=(const TComplejo &otro)
 {
     this->re = otro.re;
     this->im = otro.im;
@@ -97,7 +97,7 @@ TComplejo TComplejo ::operator*(double d)
 
 // Posible cambio
 
-TComplejo TComplejo ::operator+(TComplejo &otro)
+TComplejo TComplejo ::operator+(const TComplejo &otro)
 {
     TComplejo t;
 
@@ -108,7 +108,7 @@ TComplejo TComplejo ::operator+(TComplejo &otro)
 
 // Posible cambio
 
-TComplejo TComplejo ::operator-(TComplejo &otro)
+TComplejo TComplejo ::operator-(const TComplejo &otro)
 {
     TComplejo t;
 
@@ -119,7 +119,7 @@ TComplejo TComplejo ::operator-(TComplejo &otro)
 }
 // Posible cambio
 
-TComplejo TComplejo ::operator*(TComplejo &otro)
+TComplejo TComplejo ::operator*(const TComplejo &otro)
 {
     TComplejo t;
 
@@ -130,7 +130,7 @@ TComplejo TComplejo ::operator*(TComplejo &otro)
     return t;
 }
 
-bool TComplejo ::operator==(TComplejo &otro)
+bool TComplejo ::operator==(const TComplejo &otro)
 {
     if (this->re == otro.re && this->im == otro.im)
     {
@@ -142,7 +142,7 @@ bool TComplejo ::operator==(TComplejo &otro)
     }
 }
 
-bool TComplejo ::operator!=(TComplejo &otro)
+bool TComplejo ::operator!=(const TComplejo &otro)
 {
     if (this->re != otro.re || this->im != otro.im)
     {
