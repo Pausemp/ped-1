@@ -89,15 +89,10 @@ TComplejo TComplejo ::operator-(double d)
     return (*this - t);
 }
 
-TComplejo TComplejo ::operator*(TComplejo &otro)
+TComplejo TComplejo ::operator*(double d)
 {
-    TComplejo t;
-
-    // Fórmula de multiplicación de complejos: (ac - bd) + (ad + bc)i
-    t.re = (this->re * otro.re) - (this->im * otro.im);
-    t.im = (this->re * otro.im) + (this->im * otro.re);
-
-    return t;
+    TComplejo t(d);
+    return (*this * t);
 }
 
 // Posible cambio
@@ -128,8 +123,9 @@ TComplejo TComplejo ::operator*(TComplejo &otro)
 {
     TComplejo t;
 
-    t.re = this->re * otro.re;
-    t.im = this->im * otro.im;
+    // Fórmula de multiplicación de complejos: (ac - bd) + (ad + bc)i
+    t.re = (this->re * otro.re) - (this->im * otro.im);
+    t.im = (this->re * otro.im) + (this->im * otro.re);
 
     return t;
 }
