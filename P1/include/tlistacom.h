@@ -64,11 +64,10 @@ class TListaCom
     friend ostream &operator<<(ostream &, const TListaCom &);
 
 private:
-    TListaNodo *primero; // Primer elemento de la lista
-    TListaNodo *ultimo;  // Ultimo elemento de la lista
+    TListaNodo *primero;
+    TListaNodo *ultimo;
 
 public:
-    // FORMA CANÓNICA
     TListaCom();
     TListaCom(const TListaCom &);
     ~TListaCom();
@@ -85,7 +84,7 @@ public:
     bool InsertarD(const TComplejo &, const TListaPos &);
     bool Borrar(const TComplejo &);
     bool BorrarTodos(const TComplejo &);
-    bool Borrar(TListaPos &); // Obligatorio que sea modificado
+    bool Borrar(TListaPos &);
     TComplejo Obtener(const TListaPos &) const;
     bool Buscar(const TComplejo &) const;
     int Longitud() const;

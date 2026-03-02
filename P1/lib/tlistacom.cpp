@@ -1,15 +1,10 @@
 #include "tlistacom.h"
 
-// =========================================================
 // IMPLEMENTACIÓN TLISTANODO
-// =========================================================
 
 TListaNodo::TListaNodo() : e(), anterior(nullptr), siguiente(nullptr) {}
 
-TListaNodo::TListaNodo(const TListaNodo &otro) : e(otro.e), anterior(nullptr), siguiente(nullptr)
-{
-    // Al copiar un nodo, NO copiamos sus punteros para no estropear la estructura de la lista
-}
+TListaNodo::TListaNodo(const TListaNodo &otro) : e(otro.e), anterior(nullptr), siguiente(nullptr) {}
 
 TListaNodo::~TListaNodo()
 {
@@ -23,14 +18,11 @@ TListaNodo &TListaNodo::operator=(const TListaNodo &otro)
     if (this != &otro)
     {
         e = otro.e;
-        // Igual que en el constructor de copia, no tocamos los punteros
     }
     return *this;
 }
 
-// =========================================================
 // IMPLEMENTACIÓN TLISTAPOS
-// =========================================================
 
 TListaPos::TListaPos() : pos(nullptr) {}
 
@@ -85,9 +77,7 @@ bool TListaPos::EsVacia() const
     return pos == nullptr;
 }
 
-// =========================================================
 // IMPLEMENTACIÓN TLISTACOM
-// =========================================================
 
 TListaCom::TListaCom() : primero(nullptr), ultimo(nullptr) {}
 
@@ -125,7 +115,7 @@ TListaCom &TListaCom::operator=(const TListaCom &otra)
 {
     if (this != &otra)
     {
-        this->~TListaCom(); // Vaciamos la lista actual
+        this->~TListaCom();
 
         TListaPos p = otra.Primera();
         while (!p.EsVacia())
@@ -147,7 +137,9 @@ TListaCom &TListaCom::operator=(const TListaCom &otra)
 bool TListaCom::operator==(const TListaCom &otra) const
 {
     if (Longitud() != otra.Longitud())
+    {
         return false;
+    }
 
     TListaPos p1 = Primera();
     TListaPos p2 = otra.Primera();
@@ -155,7 +147,9 @@ bool TListaCom::operator==(const TListaCom &otra) const
     while (!p1.EsVacia() && !p2.EsVacia())
     {
         if (Obtener(p1) != otra.Obtener(p2))
+        {
             return false;
+        }
         p1 = p1.Siguiente();
         p2 = p2.Siguiente();
     }
@@ -169,15 +163,19 @@ bool TListaCom::operator!=(const TListaCom &otra) const
 
 TListaCom TListaCom::operator+(const TListaCom &otra) const
 {
-    TListaCom nueva(*this); // Copia la primera lista
+    TListaCom nueva(*this);
 
     TListaPos p = otra.Primera();
     while (!p.EsVacia())
     {
         if (nueva.EsVacia())
+        {
             nueva.InsCabeza(otra.Obtener(p));
+        }
         else
+        {
             nueva.InsertarD(otra.Obtener(p), nueva.Ultima());
+        }
         p = p.Siguiente();
     }
     return nueva;
@@ -191,13 +189,17 @@ TListaCom TListaCom::operator-(const TListaCom &otra) const
     while (!p.EsVacia())
     {
         TComplejo elem = Obtener(p);
-        // "contiene los elementos de la primera lista que NO existen en la segunda"
+
         if (!otra.Buscar(elem))
         {
             if (nueva.EsVacia())
+            {
                 nueva.InsCabeza(elem);
+            }
             else
+            {
                 nueva.InsertarD(elem, nueva.Ultima());
+            }
         }
         p = p.Siguiente();
     }
@@ -213,7 +215,9 @@ bool TListaCom::InsCabeza(const TComplejo &e)
 {
     TListaNodo *nuevo = new TListaNodo();
     if (nuevo == nullptr)
+    {
         return false;
+    }
 
     nuevo->e = e;
     if (EsVacia())
@@ -233,7 +237,9 @@ bool TListaCom::InsCabeza(const TComplejo &e)
 bool TListaCom::InsertarI(const TComplejo &e, const TListaPos &p)
 {
     if (p.EsVacia())
+    {
         return false;
+    }
 
     if (p.pos == primero)
     {
@@ -242,7 +248,9 @@ bool TListaCom::InsertarI(const TComplejo &e, const TListaPos &p)
 
     TListaNodo *nuevo = new TListaNodo();
     if (nuevo == nullptr)
+    {
         return false;
+    }
     nuevo->e = e;
 
     nuevo->siguiente = p.pos;
@@ -256,11 +264,15 @@ bool TListaCom::InsertarI(const TComplejo &e, const TListaPos &p)
 bool TListaCom::InsertarD(const TComplejo &e, const TListaPos &p)
 {
     if (p.EsVacia())
+    {
         return false;
+    }
 
     TListaNodo *nuevo = new TListaNodo();
     if (nuevo == nullptr)
+    {
         return false;
+    }
     nuevo->e = e;
 
     nuevo->anterior = p.pos;
@@ -273,7 +285,7 @@ bool TListaCom::InsertarD(const TComplejo &e, const TListaPos &p)
     }
     else
     {
-        ultimo = nuevo; // Era el último
+        ultimo = nuevo;
     }
 
     return true;
@@ -286,7 +298,7 @@ bool TListaCom::Borrar(const TComplejo &e)
     {
         if (Obtener(p) == e)
         {
-            return Borrar(p); // Llama a la otra función borrar
+            return Borrar(p);
         }
         p = p.Siguiente();
     }
@@ -300,7 +312,7 @@ bool TListaCom::BorrarTodos(const TComplejo &e)
 
     while (!p.EsVacia())
     {
-        TListaPos siguiente = p.Siguiente(); // Guardamos el siguiente antes de borrar
+        TListaPos siguiente = p.Siguiente();
         if (Obtener(p) == e)
         {
             Borrar(p);
@@ -314,24 +326,34 @@ bool TListaCom::BorrarTodos(const TComplejo &e)
 bool TListaCom::Borrar(TListaPos &p)
 {
     if (p.EsVacia())
-        return false; // El cuadernillo exige comprobar esto
+    {
+        return false;
+    }
 
     TListaNodo *borrar = p.pos;
 
-    // Ajustar punteros del entorno
     if (borrar == primero)
+    {
         primero = borrar->siguiente;
+    }
+
     if (borrar == ultimo)
+    {
         ultimo = borrar->anterior;
+    }
 
     if (borrar->anterior != nullptr)
+    {
         borrar->anterior->siguiente = borrar->siguiente;
+    }
+
     if (borrar->siguiente != nullptr)
+    {
         borrar->siguiente->anterior = borrar->anterior;
+    }
 
     delete borrar;
 
-    // Obligatorio: la posición pasa a estar vacía
     p.pos = nullptr;
 
     return true;
@@ -341,7 +363,7 @@ TComplejo TListaCom::Obtener(const TListaPos &p) const
 {
     if (p.EsVacia())
     {
-        return TComplejo(); // Devuelve objeto por defecto si pos está vacía
+        return TComplejo();
     }
     return p.pos->e;
 }
@@ -352,7 +374,9 @@ bool TListaCom::Buscar(const TComplejo &e) const
     while (!p.EsVacia())
     {
         if (Obtener(p) == e)
+        {
             return true;
+        }
         p = p.Siguiente();
     }
     return false;
@@ -384,23 +408,17 @@ TListaPos TListaCom::Ultima() const
     return p;
 }
 
-// FUNCIONES AMIGAS
-// FUNCIONES AMIGAS
-ostream &operator<<(ostream &os, TListaCom &lista)
+ostream &operator<<(ostream &os, const TListaCom &lista)
 {
     os << "{";
     TListaPos p = lista.Primera();
     while (!p.EsVacia())
     {
-
-        // SOLUCIÓN: Guardamos el valor en una variable local primero
-        TComplejo elemento = lista.Obtener(p);
-        os << elemento; // Ahora C++ sí te deja imprimirlo sin error
-
+        os << lista.Obtener(p);
         p = p.Siguiente();
         if (!p.EsVacia())
         {
-            os << " "; // Espacio entre elementos, sin espacio al final de la llave
+            os << " ";
         }
     }
     os << "}";

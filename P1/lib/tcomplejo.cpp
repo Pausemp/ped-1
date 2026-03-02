@@ -95,8 +95,6 @@ TComplejo TComplejo ::operator*(double d)
     return (*this * t);
 }
 
-// Posible cambio
-
 TComplejo TComplejo ::operator+(const TComplejo &otro)
 {
     TComplejo t;
@@ -105,8 +103,6 @@ TComplejo TComplejo ::operator+(const TComplejo &otro)
     t.im = this->im + otro.im;
     return t;
 }
-
-// Posible cambio
 
 TComplejo TComplejo ::operator-(const TComplejo &otro)
 {
@@ -117,13 +113,11 @@ TComplejo TComplejo ::operator-(const TComplejo &otro)
 
     return t;
 }
-// Posible cambio
 
 TComplejo TComplejo ::operator*(const TComplejo &otro)
 {
     TComplejo t;
 
-    // Fórmula de multiplicación de complejos: (ac - bd) + (ad + bc)i
     t.re = (this->re * otro.re) - (this->im * otro.im);
     t.im = (this->re * otro.im) + (this->im * otro.re);
 
@@ -154,7 +148,7 @@ bool TComplejo ::operator!=(const TComplejo &otro)
     }
 }
 
-ostream &operator<<(ostream &os, TComplejo &complejo)
+ostream &operator<<(ostream &os, const TComplejo &complejo)
 {
     os << "(" << complejo.re << " " << complejo.im << ")";
     return os;

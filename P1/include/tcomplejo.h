@@ -8,7 +8,7 @@ using namespace std;
 class TComplejo
 {
 
-    friend ostream &operator<<(ostream &, TComplejo &);
+    friend ostream &operator<<(ostream &, const TComplejo &);
     friend TComplejo operator+(double, const TComplejo &);
     friend TComplejo operator-(double, const TComplejo &);
     friend TComplejo operator*(double, const TComplejo &);
