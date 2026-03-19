@@ -6,34 +6,31 @@
 
 using namespace std;
 
-// Declaraciones adelantadas para poder definir la amistad
+// Declaraciones previas
 class TListaPos;
 class TListaCom;
 
-// =========================================================
 // CLASE TLISTANODO
-// =========================================================
 class TListaNodo
 {
     friend class TListaPos;
     friend class TListaCom;
 
 private:
-    TComplejo e;           // El elemento del nodo
-    TListaNodo *anterior;  // El nodo anterior
-    TListaNodo *siguiente; // El nodo siguiente
+    TComplejo e;
+    TListaNodo *anterior;
+    TListaNodo *siguiente;
 
 public:
-    // FORMA CANÓNICA
+    // Constructores
     TListaNodo();
-    TListaNodo(const TListaNodo &); // Añadido const por buena práctica
+    TListaNodo(const TListaNodo &);
     ~TListaNodo();
+
     TListaNodo &operator=(const TListaNodo &);
 };
 
-// =========================================================
 // CLASE TLISTAPOS
-// =========================================================
 class TListaPos
 {
     friend class TListaCom;
@@ -42,10 +39,11 @@ private:
     TListaNodo *pos; // Puntero a un nodo de la lista
 
 public:
-    // FORMA CANÓNICA
+    // Constructores
     TListaPos();
     TListaPos(const TListaPos &);
     ~TListaPos();
+
     TListaPos &operator=(const TListaPos &);
 
     // MÉTODOS
@@ -56,9 +54,7 @@ public:
     bool EsVacia() const;
 };
 
-// =========================================================
 // CLASE TLISTACOM
-// =========================================================
 class TListaCom
 {
     friend ostream &operator<<(ostream &, const TListaCom &);
@@ -68,6 +64,7 @@ private:
     TListaNodo *ultimo;
 
 public:
+    // Constructores
     TListaCom();
     TListaCom(const TListaCom &);
     ~TListaCom();
@@ -78,13 +75,16 @@ public:
     bool operator!=(const TListaCom &) const;
     TListaCom operator+(const TListaCom &) const;
     TListaCom operator-(const TListaCom &) const;
+
     bool EsVacia() const;
     bool InsCabeza(const TComplejo &);
     bool InsertarI(const TComplejo &, const TListaPos &);
     bool InsertarD(const TComplejo &, const TListaPos &);
+
     bool Borrar(const TComplejo &);
     bool BorrarTodos(const TComplejo &);
     bool Borrar(TListaPos &);
+
     TComplejo Obtener(const TListaPos &) const;
     bool Buscar(const TComplejo &) const;
     int Longitud() const;
