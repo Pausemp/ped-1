@@ -132,7 +132,7 @@ TComplejo TComplejo ::operator-(const TComplejo &otro)
     return t;
 }
 
-// Sobrecarga de la multiplicación entre dos objetos TComplejo
+// Sobrecarga de la multiplicación entre dos objetos TComplejoo
 TComplejo TComplejo ::operator*(const TComplejo &otro)
 {
     TComplejo t;

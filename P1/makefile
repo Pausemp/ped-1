@@ -1,6 +1,6 @@
 .PHONY= doc clean
 
-CC=g++-13
+CC=g++
 OPTIONS= -g 
 DEBUG= #-D DEBUG
 LIBDIR=lib
