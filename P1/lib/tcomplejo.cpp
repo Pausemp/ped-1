@@ -23,21 +23,21 @@ TComplejo ::~TComplejo()
 }
 
 // Función amiga: Sobrecarga de la suma
-TComplejo operator+(double d, TComplejo &otro)
+TComplejo operator+(double d, const TComplejo &otro)
 {
     TComplejo t(d);
     return t + otro;
 }
 
 // Función amiga: Sobrecarga de la resta
-TComplejo operator-(double d, TComplejo &otro)
+TComplejo operator-(double d, const TComplejo &otro)
 {
     TComplejo t(d);
     return t - otro;
 }
 
 // Función amiga: Sobrecarga de la multiplicación
-TComplejo operator*(double d, TComplejo &otro)
+TComplejo operator*(double d, const TComplejo &otro)
 {
     TComplejo t(d);
     return t * otro;

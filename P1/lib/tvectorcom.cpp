@@ -141,7 +141,7 @@ int TVectorCom::Ocupadas()
 }
 
 // Busca si un objeto TComplejo específico existe en el vector
-bool TVectorCom::ExisteCom(TComplejo &com)
+bool TVectorCom::ExisteCom(const TComplejo &com)
 {
     for (int i = 0; i < tamano; i++)
     {

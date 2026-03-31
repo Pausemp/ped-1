@@ -34,7 +34,7 @@ public:
 
     int Tamano();
     int Ocupadas();
-    bool ExisteCom(TComplejo &);
+    bool ExisteCom(const TComplejo &);
     void MostrarComplejos(double);
     bool Redimensionar(int);
 };
