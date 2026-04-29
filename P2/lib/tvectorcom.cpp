@@ -78,7 +78,7 @@ TVectorCom &TVectorCom::operator=(TVectorCom &v)
 }
 
 // Comprueba igualdad
-bool TVectorCom::operator==(const TVectorCom &v)
+bool TVectorCom::operator==(const TVectorCom &v) const
 {
     if (tamano != v.tamano)
         return false;
@@ -206,7 +206,7 @@ bool TVectorCom::Redimensionar(int t)
 }
 
 // Sobrecarga de salida <<
-ostream &operator<<(ostream &os, TVectorCom &v)
+ostream &operator<<(ostream &os, const TVectorCom &v)
 {
     os << "[";
     for (int i = 0; i < v.tamano; i++)

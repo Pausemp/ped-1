@@ -10,7 +10,7 @@ class TVectorCom
 {
 
     // Función amiga: Sobrecarga del operador de salida
-    friend ostream &operator<<(ostream &, TVectorCom &);
+    friend ostream &operator<<(ostream &, const TVectorCom &);
 
 private:
     TComplejo *c;
@@ -26,7 +26,7 @@ public:
     TVectorCom &operator=(TVectorCom &);
 
     // MÉTODOS Y OPERADORES
-    bool operator==(const TVectorCom &);
+    bool operator==(const TVectorCom &) const;
     bool operator!=(const TVectorCom &);
 
     TComplejo &operator[](int);
