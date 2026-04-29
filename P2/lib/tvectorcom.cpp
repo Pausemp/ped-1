@@ -77,8 +77,8 @@ TVectorCom &TVectorCom::operator=(TVectorCom &v)
     return *this;
 }
 
-// Comprueba igualdad: tamaño idéntico y elementos idénticos en mismas posiciones
-bool TVectorCom::operator==(TVectorCom &v)
+// Comprueba igualdad
+bool TVectorCom::operator==(const TVectorCom &v)
 {
     if (tamano != v.tamano)
         return false;
@@ -91,7 +91,7 @@ bool TVectorCom::operator==(TVectorCom &v)
 }
 
 // Comprueba desigualdad
-bool TVectorCom::operator!=(TVectorCom &v)
+bool TVectorCom::operator!=(const TVectorCom &v)
 {
     return !(*this == v);
 }

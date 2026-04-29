@@ -26,8 +26,8 @@ public:
     TVectorCom &operator=(TVectorCom &);
 
     // MÉTODOS Y OPERADORES
-    bool operator==(TVectorCom &);
-    bool operator!=(TVectorCom &);
+    bool operator==(const TVectorCom &);
+    bool operator!=(const TVectorCom &);
 
     TComplejo &operator[](int);
     TComplejo operator[](int) const;
