@@ -15,11 +15,11 @@ private:
     // Puntero al nodo
     TNodoABB *nodo;
 
-    // AUXILIAR : Devuelve el recorrido en inorden
+    // Devuelve el recorrido en inorden
     void InordenAux(TVectorCom &, int &);
-    // AUXILIAR : Devuelve el recorrido en preorden
+    // Devuelve el recorrido en preorden
     void PreordenAux(TVectorCom &, int &);
-    // AUXILIAR : Devuelve el recorrido en postorden
+    // Devuelve el recorrido en postorden
     void PostordenAux(TVectorCom &, int &);
 
 public:

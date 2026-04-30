@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// --- Funciones auxiliares globales ---
+// Funciones auxiliares globales
 
 // Función para determinar si el primer TComplejo es mayor que el segundo
 // Basado en las reglas: Módulo -> Parte Real -> Parte Imaginaria
@@ -19,9 +19,7 @@ bool MayorQue(TComplejo c1, TComplejo c2) {
     }
 }
 
-// ==========================================
 // Implementación de la Clase TNodoABB
-// ==========================================
 
 TNodoABB::TNodoABB() : item(), iz(), de() {}
 
@@ -38,9 +36,8 @@ TNodoABB & TNodoABB::operator=(TNodoABB &otro) {
     return *this;
 }
 
-// ==========================================
 // Implementación de la Clase TABBCom
-// ==========================================
+
 
 TABBCom::TABBCom() {
     nodo = NULL;
@@ -102,9 +99,9 @@ bool TABBCom::Insertar(TComplejo &c) {
         return false; // El elemento ya existe en el árbol, no permitimos duplicados
     }
     
-    if (MayorQue(nodo->item, c)) { // El nodo actual es MAYOR que el insertar => ir a la IZQUIERDA
+    if (MayorQue(nodo->item, c)) { // El nodo actual es MAYOR que el insertar ir a la IZQUIERDA
         return nodo->iz.Insertar(c);
-    } else { // El nodo actual es MENOR que el elemento => ir a la DERECHA
+    } else { // El nodo actual es MENOR que el elemento ir a la DERECHA
         return nodo->de.Insertar(c);
     }
 }
@@ -190,7 +187,7 @@ int TABBCom::NodosHoja() {
     return nodo->iz.NodosHoja() + nodo->de.NodosHoja();
 }
 
-// --- Métodos de Recorrido Auxiliares ---
+// Métodos de Recorrido Auxiliares
 
 void TABBCom::InordenAux(TVectorCom &v, int &pos) {
     if (!EsVacio()) {
@@ -219,7 +216,7 @@ void TABBCom::PostordenAux(TVectorCom &v, int &pos) {
     }
 }
 
-// --- Métodos de Recorrido ---
+// Métodos de Recorrido
 
 TVectorCom TABBCom::Inorden() {
     int posicion = 1;
@@ -267,7 +264,7 @@ TVectorCom TABBCom::Niveles() {
     return v;
 }
 
-// --- Amistad Global ---
+// Amistad Global
 
 ostream & operator<<(ostream &os, TABBCom &arbol) {
     TVectorCom v = arbol.Niveles();
