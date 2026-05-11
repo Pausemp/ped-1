@@ -21,9 +21,9 @@ public:
     // Constructores
     TVectorCom();
     TVectorCom(int);
-    TVectorCom(TVectorCom &);
+    TVectorCom(const TVectorCom &);
     ~TVectorCom();
-    TVectorCom &operator=(TVectorCom &);
+    TVectorCom &operator=(const TVectorCom &);
 
     // MÉTODOS Y OPERADORES
     bool operator==(const TVectorCom &) const;

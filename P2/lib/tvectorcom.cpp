@@ -23,7 +23,7 @@ TVectorCom::TVectorCom(int t)
 }
 
 // Constructor de copia
-TVectorCom::TVectorCom(TVectorCom &v)
+TVectorCom::TVectorCom(const TVectorCom &v)
 {
     tamano = v.tamano;
     if (tamano > 0)
@@ -52,7 +52,7 @@ TVectorCom::~TVectorCom()
 }
 
 // Operador de asignación: libera memoria actual, reserva nueva y copia profunda
-TVectorCom &TVectorCom::operator=(TVectorCom &v)
+TVectorCom &TVectorCom::operator=(const TVectorCom &v)
 {
     if (this != &v) // Evitar autoasignación
     {
